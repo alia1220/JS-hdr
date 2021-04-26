@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签模板</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 简介
+        let name="后盾人";
+        let web="houdunren.com";
+        function tag(string,...vars){
+            console.log(string) //输出以$分割的除去$变量的字符串数组
+            console.log(vars) //输出$变量
+        }
+        console.log(tag`在线教程${name},网址是${web}。`);
+
+
+        // 实战
+        let lessons=[
+            {title:"后盾人css教程",author:"后盾人"},
+            {title:"js教程后盾人",author:"后盾人向军"},
+            {title:"后盾人es",author:"向军"}
+        ]
+
+        function template(){
+            return `<ul>${lessons.map(item=>
+                links `<li>作者：${item.author}，课程：${item.title}.</li>`).join('')}</ul>`
+        }
+
+        // 如果遇到后盾人就替换成链接，所以使用标签模板
+        // join() 方法用于把数组中的所有元素放入一个字符串。
+        function links(strings,...vars){
+            console.log(strings);
+            console.log(vars);
+            return strings.map((str,key)=>{ //循环每一个srtings
+                return (
+                    str + (vars[key]?vars[key].replace("后盾人",`<a href='www.houdunren.com'>后盾人</a>`)
+                    :'')
+                )
+            }).join('')
+        }
+
+        let box=document.getElementById("box");
+        box.innerHTML=template()
+    </script>
+</body>
+</html>

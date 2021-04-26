@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 模板字符串中可以写变量、表达式、函数
+        // function show(){
+        //     return 'baidu.com'
+        // }
+        // let baidu=`www.${show()}`;
+        // console.log(baidu);
+
+        let lessons=[
+            {title:"课程一"},
+            {title:"课程二"},
+            {title:"课程三"}
+        ]
+
+        function template(){
+            return `<ul>${lessons.map(item=>
+                `<li>${item.title}</li>`).join('')}</ul>`
+        }
+
+        let box=document.getElementById("box");
+        box.innerHTML=template()
+    </script>
+</body>
+</html>
