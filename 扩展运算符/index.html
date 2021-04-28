@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <script>
+        let oldValue={
+            name:'zhangsan',
+            score:99,
+            pass:'succeed'
+        }
+        let newValue={
+            name:'zhangsan',
+            score:70,
+            pass:'failed'
+        }
+        newValue={...oldValue,...newValue}
+        console.log(newValue)
+
+        // 问题，...是浅拷贝还是深拷贝？？？
+        const arr1 = [1, 2];
+        const arr2 = [...arr1];
+        let arr3 = [3,4];
+        arr3=[...arr1, ...arr3];
+        arr2[0]=2;
+        console.log(arr1,arr2,arr3)
+
+        var params = ['hello', true, 3];
+        var other = [
+            1, 2, ...params
+        ];
+        console.log(other);
+
+
+
+        const [first,two, ...rest] = [1, 2, 3, 4, 5];
+        console.log(first,two,rest)
+
+
+        console.log([...'hello'])
+    </script>
+</body>
+</html>
